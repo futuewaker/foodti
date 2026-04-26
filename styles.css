@@ -171,12 +171,12 @@ img { display: block; max-width: 100%; image-rendering: pixelated; image-renderi
 .intro-copy p { margin: 0; }
 .intro-copy p + p { margin-top: 4px; }
 
-/* Version badge above title */
+/* Version badge above title — 薄荷绿,跟糖果粉互补,避开黄色 */
 .title-badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: var(--accent);
+  background: #A8E6C9;
   color: var(--text);
   font-family: var(--font-pixel);
   font-size: 10px;
@@ -1651,10 +1651,10 @@ img { display: block; max-width: 100%; image-rendering: pixelated; image-renderi
    FoodTI 专属:像素图 + 配对卡 + 场景块 + 隐藏款徽章
    ========================================================== */
 
-/* 跑马灯里的食物像素图(裸图无边框,沿用 petti) */
+/* 跑马灯里的食物像素图(裸图无边框,与 petti 同尺寸 96×96) */
 .scroll-row .food-pet {
   flex-shrink: 0;
-  width: 120px; height: 120px;
+  width: 96px; height: 96px;
   background: transparent;
   padding: 0;
   display: grid; place-items: center;

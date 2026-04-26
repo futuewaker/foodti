@@ -147,7 +147,7 @@
           return '<div class="food-pet"><img src="' + src + '" alt=""></div>';
         })
         .join('');
-      const PET = 120, GAP = 14;
+      const PET = 96, GAP = 14;
       row.style.width = (list.length * PET + (list.length - 1) * GAP) + 'px';
     });
   }
