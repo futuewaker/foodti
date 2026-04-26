@@ -136,18 +136,18 @@ img { display: block; max-width: 100%; image-rendering: pixelated; image-renderi
   .scroll-row { animation: none; }
 }
 
-/* BIG pixel title "CatTi" */
+/* BIG pixel title "FoodTI" — 6 字符比 petti 的 5 字符更宽,字号要小一点 */
 .title-pixel {
   font-family: var(--font-pixel);
-  font-size: 65px;
+  font-size: clamp(40px, 12.5vw, 56px);
   color: var(--text);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   line-height: 1;
   margin-top: 6px;
   font-weight: 900;
   text-transform: uppercase;
   -webkit-text-stroke: 2px var(--text);
-  text-shadow: 5px 5px 0 var(--primary);
+  text-shadow: 4px 4px 0 var(--primary);
   /* pixel-perfect rendering */
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: auto;
@@ -1651,17 +1651,13 @@ img { display: block; max-width: 100%; image-rendering: pixelated; image-renderi
    FoodTI 专属:像素图 + 配对卡 + 场景块 + 隐藏款徽章
    ========================================================== */
 
-/* 跑马灯里的食物像素图盒子 */
+/* 跑马灯里的食物像素图(裸图无边框,沿用 petti) */
 .scroll-row .food-pet {
   flex-shrink: 0;
-  width: 96px; height: 96px;
-  background: var(--bg);
-  border: 2px solid var(--text);
-  box-shadow: 3px 3px 0 var(--primary);
-  border-radius: 18px;
+  width: 120px; height: 120px;
+  background: transparent;
+  padding: 0;
   display: grid; place-items: center;
-  padding: 6px;
-  overflow: hidden;
 }
 .scroll-row .food-pet img {
   width: 100%; height: 100%;
