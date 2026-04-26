@@ -18,13 +18,13 @@
     "dim": "EI",
     "weight": 1,
     "trump": false,
-    "scene": "📅",
-    "bubble": "周末默认状态",
-    "text": "完全空闲的一个周末,你的默认状态?",
+    "scene": "🎉",
+    "bubble": "聚会能量条",
+    "text": "一场十几个人的聚会,过到一半你?",
     "options": [
-      { "label": "找朋友约局,不能在家闲着",   "letter": "E" },
-      { "label": "看心情,有局就去没局也不强求", "letter": "E" },
-      { "label": "关上门,享受独处充电",       "letter": "I" }
+      { "label": "正嗨,还想拉人去续摊",       "letter": "E" },
+      { "label": "状态在线,但开始想家里的床", "letter": "E" },
+      { "label": "电量见底,只想找借口溜走",   "letter": "I" }
     ]
   },
   {
@@ -63,11 +63,11 @@
     "trump": true,
     "scene": "🍽️",
     "bubble": "没见过的菜",
-    "text": "服务员端来一道你完全没见过的菜,你的第一动作?",
+    "text": "服务员端来一道你完全没见过的菜,你的第一反应?",
     "options": [
-      { "label": "凑近闻闻,夹一口先尝",       "letter": "S" },
-      { "label": "拍照查一下,这是什么",       "letter": "S" },
-      { "label": "这是哪国的、谁发明的、像啥", "letter": "N" }
+      { "label": "凑近闻闻,夹一口先尝",         "letter": "S" },
+      { "label": "看清楚里面有什么食材、怎么做的", "letter": "S" },
+      { "label": "这是哪国的、像啥、想到了什么", "letter": "N" }
     ]
   },
   {
@@ -80,8 +80,8 @@
     "text": "刷到一张你喜欢的穿搭照,你最先注意?",
     "options": [
       { "label": "衣服材质、版型、上身效果",   "letter": "S" },
-      { "label": "拍照地点 / 模特表情",       "letter": "S" },
-      { "label": "整张图想表达的风格 / 灵感", "letter": "N" }
+      { "label": "整张图的氛围 / 故事感",       "letter": "N" },
+      { "label": "想表达的风格 / 设计灵感",     "letter": "N" }
     ]
   },
   {
@@ -104,12 +104,12 @@
     "weight": 1,
     "trump": false,
     "scene": "🛍️",
-    "bubble": "买一件 100 块的东西",
-    "text": "买一件 100 块的东西,你更看重?",
+    "bubble": "买一件 100 块的小东西",
+    "text": "买一件 100 块的小东西,你最先看?",
     "options": [
-      { "label": "实用性,用得上、不浪费",     "letter": "S" },
-      { "label": "颜值,第一眼有没有打中你",   "letter": "S" },
-      { "label": "故事 / 设计师 / 品牌理念",   "letter": "N" }
+      { "label": "实用性,用得上、不浪费",       "letter": "S" },
+      { "label": "做工质感,摸起来值不值这个价", "letter": "S" },
+      { "label": "背后的故事 / 设计师 / 品牌理念", "letter": "N" }
     ]
   },
 
@@ -136,9 +136,9 @@
     "bubble": "AA 算账",
     "text": "AA 算账有人少付了二十块,你?",
     "options": [
-      { "label": "当面指出,『xx 你少转了哈』",   "letter": "T" },
-      { "label": "私聊截图给 ta,『方便补一下』", "letter": "F" },
-      { "label": "算了,自己默默贴上",         "letter": "F" }
+      { "label": "群里直接 @,『xx 你少转了哈』", "letter": "T" },
+      { "label": "私聊截图给 ta,留点面子",     "letter": "T" },
+      { "label": "算了,二十块不值得让大家尴尬", "letter": "F" }
     ]
   },
   {
@@ -146,13 +146,13 @@
     "dim": "TF",
     "weight": 1,
     "trump": false,
-    "scene": "📚",
-    "bubble": "小组作业有 bug",
-    "text": "小组作业有人交的部分明显有问题,会拖整组分,你?",
+    "scene": "💬",
+    "bubble": "朋友在吐槽",
+    "text": "朋友跟你吐槽 ta 室友又干了一件离谱事,你?",
     "options": [
-      { "label": "直接在群里指出,有理有据",   "letter": "T" },
-      { "label": "私聊提醒 ta,给 ta 留面子",   "letter": "F" },
-      { "label": "帮 ta 想怎么改 + 怎么收尾",   "letter": "F" }
+      { "label": "客观分析,告诉 ta 这事谁占理", "letter": "T" },
+      { "label": "听完先给情绪,再聊怎么办",     "letter": "F" },
+      { "label": "全程站 ta,『ta 真的很过分』", "letter": "F" }
     ]
   },
   {
@@ -160,13 +160,13 @@
     "dim": "TF",
     "weight": 1,
     "trump": false,
-    "scene": "💭",
-    "bubble": "察觉亲人失望",
-    "text": "你做了一个决定,亲人没说什么但你察觉到 ta 失望,你?",
+    "scene": "🎁",
+    "bubble": "朋友的生日礼物",
+    "text": "朋友生日,你挑礼物的逻辑?",
     "options": [
-      { "label": "把决策的理性原因摆给 ta 听", "letter": "T" },
-      { "label": "先承认 ta 的感受,再聊原因", "letter": "F" },
-      { "label": "自责一下,想着怎么补偿 ta",   "letter": "F" }
+      { "label": "ta 之前提过缺什么 / 用得上",   "letter": "T" },
+      { "label": "想 ta 收到那一刻会不会被戳中", "letter": "F" },
+      { "label": "贵不贵不重要,心意要让 ta 感受到", "letter": "F" }
     ]
   },
 
@@ -207,8 +207,8 @@
     "bubble": "你的冰箱 / 桌面",
     "text": "你的冰箱(或电脑桌面)通常?",
     "options": [
-      { "label": "分类整齐,过期 / 重复定期清", "letter": "J" },
-      { "label": "看着还行,但只有自己知道在哪", "letter": "J" },
+      { "label": "分类整齐,过期 / 重复定期清",   "letter": "J" },
+      { "label": "乱归乱,但我自己一摸就知道在哪", "letter": "P" },
       { "label": "想到再整理,过期就扔,文件靠搜", "letter": "P" }
     ]
   },

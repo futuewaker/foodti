@@ -1889,6 +1889,17 @@ img { display: block; max-width: 100%; image-rendering: pixelated; image-renderi
   border-left: 3px solid var(--primary-dk);
 }
 
+/* 低置信度软提示 — 紧跟气质标签下面 */
+.alt-hint {
+  margin: 4px 2px 18px;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  font-style: italic;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
+.alt-hint[hidden] { display: none !important; }
+
 /* 食物自述(monologue)——内嵌在 result-quote 之后,作为引言 */
 .food-monologue {
   background: var(--bg);

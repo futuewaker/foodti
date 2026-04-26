@@ -72,6 +72,7 @@
     btnNext:         $('btn-next'),
     resultImage:          $('result-image'),
     hiddenBadge:          $('hidden-badge'),
+    altHint:              $('alt-hint'),
     resultNameTitle:      $('result-name-title'),
     resultName:           $('result-name'),
     resultMdValue:        $('result-md-value'),
@@ -421,6 +422,31 @@
       span.textContent = '#' + t;
       el.resultTags.appendChild(span);
     });
+
+    // 低置信度软提示 — 哪个维度差距只有 ±1,翻那个字母得 secondary MBTI 对应食物
+    if (el.altHint) {
+      const lowEntries = Object.entries(result.confidences || {})
+        .filter(([, v]) => v <= 0.2);
+      let secondaryFood = null;
+      if (lowEntries.length > 0) {
+        const [lowDim] = lowEntries[0];
+        const dimList = ['EI', 'SN', 'TF', 'JP'];
+        const dimIdx = dimList.indexOf(lowDim);
+        const cur = result.mbti[dimIdx];
+        const [pA, pB] = POLES[lowDim];
+        const flipped = cur === pA ? pB : pA;
+        const altMbti = result.mbti.split('');
+        altMbti[dimIdx] = flipped;
+        secondaryFood = state.foods.find((x) => x.mbti === altMbti.join(''));
+      }
+      if (secondaryFood) {
+        el.altHint.textContent = '⌇ 你的 ' + lowEntries[0][0] +
+          ' 维度比较接近边界,你也有几分像「' + secondaryFood.name_zh + '」';
+        el.altHint.hidden = false;
+      } else {
+        el.altHint.hidden = true;
+      }
+    }
 
     el.resultCatchphrases.innerHTML = '';
     (food.alternates || []).forEach((alt) => {

@@ -67,7 +67,7 @@
   {
     "id": "sparkling-soda",
     "mbti": "ENTP",
-    "name_zh": "气泡饮料",
+    "name_zh": "跳跳糖汽水",
     "name_en": "Sparkling Soda",
     "title": "FIZZ",
     "subtitle": "跳脱发想型",
@@ -79,7 +79,7 @@
       "起泡"
     ],
     "alternates": [
-      "跳跳糖",
+      "气泡饮料",
       "创意甜品"
     ],
     "taste_signature": {
@@ -438,7 +438,7 @@
       "粉淇凌"
     ],
     "watch_pair": [
-      "气泡饮料"
+      "跳跳糖汽水"
     ],
     "scene": "聚会结束你最后一个走,顺手收拾完桌子才关灯",
     "friendships": [
@@ -467,7 +467,7 @@
     "title": "ORDER",
     "subtitle": "高效执行型",
     "image": "images/salad.png",
-    "tagline": "营养、卡路里、上桌时间,都给我算清楚",
+    "tagline": "切多大、拌多久、几点上桌——都有规矩",
     "flavor_keywords": [
       "有序",
       "高效",
@@ -534,9 +534,9 @@
     "image": "images/macaron.png",
     "tagline": "壳薄馅软,看着甜其实层次很多",
     "flavor_keywords": [
-      "柔软",
+      "理想",
       "敏感",
-      "轻盈"
+      "层次"
     ],
     "alternates": [
       "草莓牛奶",
@@ -825,7 +825,7 @@
     ],
     "best_pair": [
       "草莓蛋糕",
-      "气泡饮料"
+      "跳跳糖汽水"
     ],
     "watch_pair": [
       "辣条"
@@ -890,7 +890,7 @@
     ],
     "best_pair": [
       "草莓蛋糕",
-      "气泡饮料"
+      "跳跳糖汽水"
     ],
     "watch_pair": [
       "曲奇"
@@ -958,7 +958,7 @@
       "辣条"
     ],
     "watch_pair": [
-      "气泡饮料"
+      "跳跳糖汽水"
     ],
     "scene": "朋友半夜发烧,你已经在熬第二碗汤并查附近的医院",
     "friendships": [
