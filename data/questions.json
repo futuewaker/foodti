@@ -34,9 +34,9 @@
     "trump": false,
     "scene": "👥",
     "bubble": "陌生人组",
-    "text": "公司年会随机分组,你被分到一组没见过的人,前 5 分钟你?",
+    "text": "选修课第一节随机分组讨论,你被分到一桌没见过的人,前 5 分钟你?",
     "options": [
-      { "label": "主动开场,问一圈名字 + 部门", "letter": "E" },
+      { "label": "主动开场,问一圈名字 + 专业", "letter": "E" },
       { "label": "从手边那个人开始小声打招呼", "letter": "I" },
       { "label": "等别人先开口,自己附和就行", "letter": "I" }
     ]
@@ -120,9 +120,9 @@
     "trump": true,
     "scene": "😢",
     "bubble": "ta 来跟你哭诉",
-    "text": "朋友来跟你哭诉一段难处理的感情,你最先?",
+    "text": "朋友半夜跟你哭诉一件难受的事(被同学排挤、跟室友闹别扭都行),你最先?",
     "options": [
-      { "label": "帮 ta 分析,这个人值不值得", "letter": "T" },
+      { "label": "帮 ta 分析,对方到底什么意思", "letter": "T" },
       { "label": "给一个具体可执行的下一步",   "letter": "T" },
       { "label": "先抱抱 ta,『难过就先难过一会儿』", "letter": "F" }
     ]
@@ -146,12 +146,12 @@
     "dim": "TF",
     "weight": 1,
     "trump": false,
-    "scene": "📊",
-    "bubble": "同事方案有 bug",
-    "text": "同事的方案明显有 bug,会让用户体验不好,你?",
+    "scene": "📚",
+    "bubble": "小组作业有 bug",
+    "text": "小组作业有人交的部分明显有问题,会拖整组分,你?",
     "options": [
-      { "label": "直接在会上指出,有理有据",   "letter": "T" },
-      { "label": "会后私下提醒,给 ta 留面子", "letter": "F" },
+      { "label": "直接在群里指出,有理有据",   "letter": "T" },
+      { "label": "私聊提醒 ta,给 ta 留面子",   "letter": "F" },
       { "label": "帮 ta 想怎么改 + 怎么收尾",   "letter": "F" }
     ]
   },

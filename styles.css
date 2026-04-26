@@ -1799,6 +1799,7 @@ img { display: block; max-width: 100%; image-rendering: pixelated; image-renderi
 .friendship-accent-a { box-shadow: 4px 4px 0 var(--primary-dk); }
 .friendship-accent-b { box-shadow: 4px 4px 0 var(--accent); }
 .friendship-accent-c { box-shadow: 4px 4px 0 var(--primary); }
+.friendship-accent-d { box-shadow: 4px 4px 0 #8FB87E; }      /* 薄荷绿,跟糖果粉互补 */
 
 .friendship-card-head {
   display: flex;
@@ -1819,6 +1820,7 @@ img { display: block; max-width: 100%; image-rendering: pixelated; image-renderi
 .friendship-accent-a .friendship-card-icon { background: var(--primary-lt); color: var(--primary-dk); }
 .friendship-accent-b .friendship-card-icon { background: #FFF7DC;            color: #B8860B; }
 .friendship-accent-c .friendship-card-icon { background: var(--bg-soft);     color: var(--primary-dk); }
+.friendship-accent-d .friendship-card-icon { background: #E8F5DD;            color: #5A8C45; }
 .friendship-card-icon svg {
   width: 18px; height: 18px;
 }
