@@ -82,13 +82,28 @@ foodti/
 
 ## 自检
 
+### 数据完整性 + 算法零平局
+
 ```bash
 npm test
 # ✓ 16/16 MBTI types reachable
-# ✓ 0 ties across 65536 answer permutations
+# ✓ 0 ties across 65536 binary-projection combinations
+# ✓ 0 ties across 50000 N-ary random samples
 # ✓ foods.json covers all 16 MBTI cells exactly once
-# ✓ questions.json schema valid
+# ✓ questions.json schema valid (3+ options per question)
 ```
+
+### 32 人格对抗式准确率回归测试
+
+模拟 32 名用户(2 名/MBTI × 16 类型,真诚答题模型 95%/99% 对齐)走完整流程,验证算法是否能把答案准确映射回 MBTI:
+
+```bash
+npm run test:personas
+# ✓ 32/32 EXACT(2026-04-26 v4 题库)
+# 任一维度低置信度时,UI 会显示 alt-hint 提示用户也有点像 secondary food
+```
+
+题库或算法改动后,跑这个回归测试看是否还能 28+/32(基线 87.5%)。
 
 ## 结果页内容
 

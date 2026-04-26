@@ -4,7 +4,9 @@
   "description": "FoodTI · 把你映射成 16 种食物之一(隐藏 MBTI)",
   "type": "module",
   "scripts": {
-    "test": "node scripts/test-classifier.js"
+    "test": "node scripts/test-classifier.js",
+    "test:personas": "node scripts/test-personas.mjs",
+    "test:all": "node scripts/test-classifier.js && node scripts/test-personas.mjs"
   },
   "private": true
 }
