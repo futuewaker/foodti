@@ -1,0 +1,10 @@
+{
+  "name": "foodti",
+  "version": "0.1.0",
+  "description": "FoodTI · 把你映射成 16 种食物之一(隐藏 MBTI)",
+  "type": "module",
+  "scripts": {
+    "test": "node scripts/test-classifier.js"
+  },
+  "private": true
+}

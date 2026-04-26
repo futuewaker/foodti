@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#FFFFFF">
+  <meta name="description" content="FoodTI 食格测试 · 16 种食物找你的闺蜜搭子">
+  <meta property="og:title" content="FoodTI · 食格测试">
+  <meta property="og:description" content="16 种食物找你的闺蜜搭子 · 灵魂搭子 / 互补搭子 / 解压搭子,一次测齐">
+  <meta property="og:type" content="website">
+  <title>FoodTI · 食格测试</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%20shape-rendering%3D%22crispEdges%22%3E%3Cpath%20fill%3D%22%23FF6B95%22%20d%3D%22M3%203h2v2H3zm8%200h2v2h-2zM3%205h2v2H3zm2%200h6v6H5zm6%200h2v2h-2zM5%2011h6v2H5z%22/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- SVG defs -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="icon-arrow-left" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M14 6l-6 6 6 6"/>
+      </symbol>
+      <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M10 6l6 6-6 6"/>
+      </symbol>
+      <symbol id="icon-download" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M5 20h14"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <main class="app" id="app">
+
+    <!-- ===================== INTRO ===================== -->
+    <section class="view view-intro active" id="view-intro" aria-label="首页">
+      <div class="intro-inner">
+        <!-- 3-row scrolling food marquee -->
+        <div class="intro-scroll" aria-hidden="true">
+          <div class="scroll-row" id="scroll-row-1"></div>
+          <div class="scroll-row scroll-reverse" id="scroll-row-2"></div>
+          <div class="scroll-row" id="scroll-row-3"></div>
+        </div>
+
+        <span class="title-badge">2026 NEW · 闺蜜找搭子</span>
+        <h1 class="title-pixel">FoodTI</h1>
+
+        <p class="intro-slogan-hero">
+          <span class="slogan-bracket">「</span><s class="slogan-strike">MBTI</s> <em class="slogan-hl">食物塑</em><span class="slogan-bracket">」</span>
+        </p>
+        <p class="intro-slogan-sub">16 种食物找你的闺蜜搭子</p>
+
+        <button class="btn btn-primary btn-lg" id="btn-start" type="button">
+          开始测试
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </button>
+
+        <p class="intro-hint">约 1 分钟 · 灵魂搭子 / 互补搭子 / 解压搭子 一次测齐</p>
+      </div>
+    </section>
+
+    <!-- ===================== QUIZ ===================== -->
+    <section class="view view-quiz" id="view-quiz" aria-label="题目">
+      <header class="quiz-header">
+        <button class="icon-btn" id="btn-home" type="button" aria-label="回到首页">
+          <svg viewBox="0 0 24 24"><use href="#icon-arrow-left"/></svg>
+        </button>
+        <div class="progress-bar-wrap" role="progressbar" aria-valuemin="1" aria-valuemax="16" aria-valuenow="1">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+          <div class="progress-count">
+            <span id="progress-current">1</span> <span class="progress-slash">/</span> <span id="progress-total">16</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="scenario-hint">
+        <div class="scenario-avatar" aria-hidden="true">
+          <span class="scenario-emoji" id="scenario-emoji">🍲</span>
+        </div>
+        <div class="scenario-bubble" id="scenario-bubble">闺蜜群召唤令</div>
+      </div>
+
+      <div class="quiz-stage">
+        <article class="quiz-card" id="quiz-card">
+          <h2 class="q-text" id="q-text">题目加载中…</h2>
+          <ul class="options" id="options-list" role="radiogroup" aria-label="选项"></ul>
+        </article>
+      </div>
+
+      <footer class="quiz-footer">
+        <button class="nav-btn" id="btn-prev" type="button" aria-label="上一题" disabled>
+          <svg viewBox="0 0 24 24"><use href="#icon-arrow-left"/></svg>
+          <span>上一题</span>
+        </button>
+        <button class="nav-btn" id="btn-next" type="button" aria-label="下一题" disabled>
+          <span>下一题</span>
+          <svg viewBox="0 0 24 24"><use href="#icon-arrow-right"/></svg>
+        </button>
+      </footer>
+    </section>
+
+    <!-- ===================== RESULT ===================== -->
+    <section class="view view-result" id="view-result" aria-label="结果">
+      <div class="result-top">
+        <div class="pixel-avatar pixel-avatar-lg" aria-hidden="true">
+          <img id="result-image" src="" alt="">
+        </div>
+        <span class="hidden-badge" id="hidden-badge" hidden>✨ 隐藏款 ✨</span>
+        <p class="result-preamble">你的本命食物是</p>
+        <h2 class="result-name">
+          <span id="result-name-title"></span><span id="result-name"></span>
+        </h2>
+      </div>
+
+      <blockquote class="result-quote" id="result-quote"></blockquote>
+
+      <h3 class="result-section-title">气质标签</h3>
+      <div class="result-tags" id="result-tags"></div>
+
+      <h3 class="result-section-title">食格速评</h3>
+      <div class="quick-review-wrap">
+        <div class="result-quick-review" id="result-quick-review"></div>
+        <a class="btn-share-mini" href="https://www.xiaohongshu.com" id="btn-share-mini-xhs" target="_blank" rel="noopener noreferrer" aria-label="分享到小红书">分享 →</a>
+      </div>
+
+      <h3 class="result-section-title">食格解读</h3>
+      <div class="result-interpretation" id="result-interpretation"></div>
+
+      <h3 class="result-section-title">你的两个副指数</h3>
+      <div class="highlight-cards">
+        <div class="highlight-card highlight-card-md">
+          <span class="highlight-card-label">外放度</span>
+          <span class="highlight-card-value" id="result-md-value">--</span>
+          <span class="highlight-card-note" id="result-md-note">--</span>
+        </div>
+        <div class="highlight-card highlight-card-nz">
+          <span class="highlight-card-label">感性度</span>
+          <span class="highlight-card-value" id="result-nz-value">--</span>
+          <span class="highlight-card-note" id="result-nz-note">--</span>
+        </div>
+      </div>
+
+      <h3 class="result-section-title">味道画像</h3>
+      <div class="radar-wrap">
+        <canvas id="radar-canvas" width="600" height="600" aria-label="味道雷达图"></canvas>
+      </div>
+
+      <h3 class="result-section-title">同气质别名</h3>
+      <div class="result-catchphrases" id="result-catchphrases"></div>
+
+      <h3 class="result-section-title">你的搭子图谱</h3>
+      <div class="friendship-cards" id="friendship-cards"></div>
+
+      <h3 class="result-section-title">典型场景</h3>
+      <div class="result-scene" id="result-scene"></div>
+
+      <!-- QR code · included in long screenshot -->
+      <div class="result-qr-block">
+        <div class="result-qr-wrap">
+          <img src="images/qr-foodti.png" alt="扫码测 FoodTI" class="result-qr">
+        </div>
+        <div class="result-qr-text">
+          <div class="result-qr-title">扫码找你的闺蜜搭子</div>
+          <div class="result-qr-sub">FoodTI · 食格测试</div>
+          <div class="result-qr-tag">1 分钟 · 16 种食格</div>
+        </div>
+      </div>
+
+      <div class="result-actions">
+        <button class="btn btn-primary" id="btn-save-long" type="button">
+          <span class="btn-icon" aria-hidden="true">📸</span>
+          一键长截图保存
+        </button>
+        <button class="btn btn-secondary" id="btn-share" type="button">复制分享链接</button>
+        <button class="btn btn-ghost" id="btn-restart" type="button">再测一次</button>
+      </div>
+
+      <a class="xhs-promo"
+         href="https://www.xiaohongshu.com"
+         id="xhs-promo"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="跳转作者的小红书主页">
+        <span class="xhs-badge" aria-hidden="true">小红书</span>
+        <span class="xhs-text">
+          <span class="xhs-title">作者的小红书</span>
+          <span class="xhs-sub">更多闺蜜测试正在路上</span>
+        </span>
+        <span class="xhs-arrow" aria-hidden="true">→</span>
+      </a>
+
+      <p class="result-footer-note">愿你和这份食物一样,被对的人尝到。</p>
+    </section>
+
+  </main>
+
+  <!-- Save loading overlay -->
+  <div class="save-loading" id="save-loading" aria-hidden="true">
+    <div class="save-loading-inner">
+      <div class="spinner"></div>
+      <div>正在生成长图…</div>
+    </div>
+  </div>
+
+  <!-- Save modal fallback for iOS (long-press to save) -->
+  <div class="save-modal" id="save-modal" aria-hidden="true">
+    <div class="save-modal-backdrop" id="save-modal-backdrop"></div>
+    <div class="save-modal-inner">
+      <div class="save-modal-hint">📱 长按图片保存到相册</div>
+      <div class="save-modal-img-wrap">
+        <img class="save-modal-img" id="save-modal-img" src="" alt="结果图">
+      </div>
+      <button class="btn btn-ghost" id="btn-save-close" type="button">关闭</button>
+    </div>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
