@@ -452,12 +452,35 @@
   }
 
   // ------------------------------------------------------------
-  // Friendships(搭子图谱)
+  // Friendships(搭子图谱)— 内联 SVG 图标(不用 emoji)
   // ------------------------------------------------------------
-  const FRIENDSHIP_ICON = {
-    '契合搭子': '💖',
-    '互补搭子': '🌗',
-    '解压搭子': '🍿'
+  // 每种类型一个简笔图标(stroke 风格,跟全站像素描边一致)
+  const ICON_HEART  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>';
+  const ICON_SHIELD = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>';
+  const ICON_BRIEF  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>';
+  const ICON_NOTE   = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>';
+  const ICON_YIN    = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a5 5 0 0 0 0 10 5 5 0 0 1 0 10"/><circle cx="12" cy="7" r="1" fill="currentColor"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>';
+  const ICON_COUCH  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 14v6h4l1-2h10l1 2h4v-6a3 3 0 0 0-3-3h-1V8a3 3 0 0 0-3-3H9a3 3 0 0 0-3 3v3H5a3 3 0 0 0-3 3z"/></svg>';
+  const ICON_UMB    = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12a10 10 0 0 1 20 0z"/><path d="M12 12v8a3 3 0 0 1-6 0"/></svg>';
+  const ICON_PULSE  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>';
+  const ICON_BOWL   = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 11h20v2a8 8 0 0 1-16 0v-2zM12 7V3"/></svg>';
+  const ICON_FRAME  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M9 6V4h6v2"/></svg>';
+
+  // 类型 → 图标 + 卡片色调
+  // 顺序也决定卡片显示色调(粉/黄/淡粉)
+  const FRIENDSHIP_THEME = {
+    '出生入死的战友': { icon: ICON_SHIELD, accent: 'a' },
+    '战友兼干饭':     { icon: ICON_BOWL,   accent: 'a' },
+    '商业伙伴':       { icon: ICON_BRIEF,  accent: 'b' },
+    '战略伙伴':       { icon: ICON_BRIEF,  accent: 'b' },
+    '知音难觅':       { icon: ICON_NOTE,   accent: 'a' },
+    '灵魂共振':       { icon: ICON_HEART,  accent: 'a' },
+    '情绪共振':       { icon: ICON_PULSE,  accent: 'a' },
+    '互补搭子':       { icon: ICON_YIN,    accent: 'b' },
+    '解压搭子':       { icon: ICON_COUCH,  accent: 'c' },
+    '兜底搭子':       { icon: ICON_UMB,    accent: 'c' },
+    '出片搭子':       { icon: ICON_FRAME,  accent: 'c' },
+    '干饭搭子':       { icon: ICON_BOWL,   accent: 'c' }
   };
 
   function renderFriendships(food) {
@@ -468,17 +491,17 @@
         const partner = state.foods.find((x) => x.name_zh === fr.food);
         const partnerImg = partner ? partner.image : '';
         const partnerSubtitle = partner ? (partner.subtitle || '') : '';
-        const icon = FRIENDSHIP_ICON[fr.type] || '✨';
+        const theme = FRIENDSHIP_THEME[fr.type] || { icon: ICON_HEART, accent: 'a' };
         return (
-          '<div class="friendship-card">' +
+          '<div class="friendship-card friendship-accent-' + theme.accent + '">' +
             '<div class="friendship-card-head">' +
-              '<span class="friendship-card-icon">' + icon + '</span>' +
+              '<span class="friendship-card-icon">' + theme.icon + '</span>' +
               '<span class="friendship-card-type">' + fr.type + '</span>' +
             '</div>' +
             '<div class="friendship-card-partner">' +
               (partnerImg
                 ? '<img class="friendship-card-img" src="' + partnerImg + '" alt="">'
-                : '<div class="friendship-card-img friendship-card-img-empty">🍴</div>') +
+                : '<div class="friendship-card-img friendship-card-img-empty">·</div>') +
               '<div class="friendship-card-partner-text">' +
                 '<div class="friendship-card-name">' + (fr.food || '') + '</div>' +
                 '<div class="friendship-card-sub">' + partnerSubtitle + '</div>' +

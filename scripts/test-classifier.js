@@ -5,10 +5,12 @@
  *
  * 三件事必须全过:
  *   ① 16 格可达性 — 每个 MBTI 都能由某组合法答案得到对应食物
- *   ② 零平局验证 — 暴力枚举所有 2^16 = 65536 种二选一组合,
- *                   classify 永远返回长度为 4 的 mbti、confidences 永不含 0
- *   ③ 数据完整性 — questions.json 满足 schema 强约束、
- *                   foods.json 16 条记录的 mbti 字段恰好覆盖 16 个排列
+ *   ② 零平局验证 — 由于每个选项都把"自己的字母"以问题的 weight 投票,
+ *                   每维度 4 题 (2,1,1,1) 总分必然是奇数 ⇒ 不可能为 0。
+ *                   测试用所有 N^16 组合的「极端二元投影」(每题取最 E + 最 I 两边)
+ *                   2^16 暴力 + 50k 随机 N-ary 抽样,双保险。
+ *   ③ 数据完整性 — questions.json 满足 schema(每题 ≥ 2 选项 + 选项字母覆盖
+ *                   该维度两端)、foods.json 16 条记录的 mbti 覆盖全集。
  * ---------------------------------------------------------------------------
  */
 
@@ -49,14 +51,22 @@ for (const q of questions) {
   expect(`Q${q.id} dim 合法`, ['EI', 'SN', 'TF', 'JP'].includes(q.dim), `dim=${q.dim}`);
   expect(`Q${q.id} weight ∈ {1,2}`, q.weight === 1 || q.weight === 2, `w=${q.weight}`);
   expect(`Q${q.id} trump 一致`, q.trump === (q.weight === 2), `trump=${q.trump} w=${q.weight}`);
-  expect(`Q${q.id} 选项 2 个`, q.options.length === 2, `len=${q.options.length}`);
+  expect(`Q${q.id} 选项 ≥ 2 个`, q.options.length >= 2, `len=${q.options.length}`);
 
-  const [a, b] = q.options;
-  const expected = __internals.POLES[q.dim];
+  const expectedPoles = __internals.POLES[q.dim];
+  const optionLetters = q.options.map((o) => o.letter);
+  const allValid = optionLetters.every((l) => expectedPoles && expectedPoles.includes(l));
+  const coversBothPoles = expectedPoles &&
+    expectedPoles.every((p) => optionLetters.includes(p));
   expect(
-    `Q${q.id} 两选项字母正交`,
-    expected && expected.includes(a.letter) && expected.includes(b.letter) && a.letter !== b.letter,
-    `letters=${a.letter}/${b.letter} expected=${expected?.join('/')}`
+    `Q${q.id} 选项字母合法`,
+    allValid,
+    `letters=[${optionLetters.join(',')}] expected=${expectedPoles?.join('/')}`
+  );
+  expect(
+    `Q${q.id} 选项覆盖两端字母`,
+    coversBothPoles,
+    `letters=[${optionLetters.join(',')}] missing=${expectedPoles?.filter((p) => !optionLetters.includes(p)).join(',')}`
   );
 
   dimCount[q.dim]++;
@@ -133,49 +143,61 @@ for (const m of allMbti) {
 }
 
 // ---------------------------------------------------------------------------
-// 3. 零平局验证 — 暴力 65536 答案组合
+// 3a. 零平局验证 (binary projection) — 每题取一个最 E + 最 I 选项的 2^16 暴力
 // ---------------------------------------------------------------------------
-const total = 1 << 16; // 65536
+const dimsByQ = questions.map((q) => q.dim);
+const weightsByQ = questions.map((q) => q.weight);
+const idsByQ = questions.map((q) => q.id);
+// 每题在两个 pole 各挑一个代表选项
+const binaryPickByQ = questions.map((q) => {
+  const poles = __internals.POLES[q.dim];
+  return poles.map((p) => q.options.find((o) => o.letter === p));
+});
+
+const total = 1 << 16;
 let tieCount = 0;
 let badMbtiCount = 0;
 let badFoodCount = 0;
 
-const dimsByQ = questions.map((q) => q.dim);
-const polesByQ = questions.map((q) => __internals.POLES[q.dim]);
-const weightsByQ = questions.map((q) => q.weight);
-const idsByQ = questions.map((q) => q.id);
-
 for (let mask = 0; mask < total; mask++) {
   const answers = new Array(16);
   for (let i = 0; i < 16; i++) {
-    const pickIdx = (mask >> i) & 1; // 0 → poles[0], 1 → poles[1]
+    const pick = binaryPickByQ[i][(mask >> i) & 1];
     answers[i] = {
       id: idsByQ[i],
       dim: dimsByQ[i],
       weight: weightsByQ[i],
-      letter: polesByQ[i][pickIdx],
+      letter: pick.letter,
     };
   }
   let r;
-  try {
-    r = classify(answers, foods);
-  } catch (e) {
-    badMbtiCount++;
-    continue;
-  }
+  try { r = classify(answers, foods); } catch (e) { badMbtiCount++; continue; }
   if (r.mbti.length !== 4) badMbtiCount++;
   if (!foodMbti.has(r.mbti)) badFoodCount++;
   for (const v of Object.values(r.confidences)) {
-    if (v === 0) {
-      tieCount++;
-      break;
-    }
+    if (v === 0) { tieCount++; break; }
   }
 }
+expect(`二元投影 65536 组合零平局`, tieCount === 0, `ties=${tieCount}`);
+expect(`二元投影 mbti 长度均为 4`, badMbtiCount === 0, `bad=${badMbtiCount}`);
+expect(`二元投影食物均可命中`, badFoodCount === 0, `bad=${badFoodCount}`);
 
-expect(`65536 种作答组合零平局`, tieCount === 0, `ties=${tieCount}`);
-expect(`65536 种作答组合 mbti 长度均为 4`, badMbtiCount === 0, `bad=${badMbtiCount}`);
-expect(`65536 种作答组合食物均可命中`, badFoodCount === 0, `bad=${badFoodCount}`);
+// ---------------------------------------------------------------------------
+// 3b. 零平局验证 (N-ary 随机抽样) — 50000 次随机选项,验证多选项情况下也无平局
+// ---------------------------------------------------------------------------
+let randomTie = 0;
+const SAMPLES = 50000;
+for (let s = 0; s < SAMPLES; s++) {
+  const answers = questions.map((q) => {
+    const opt = q.options[Math.floor(Math.random() * q.options.length)];
+    return { id: q.id, dim: q.dim, weight: q.weight, letter: opt.letter };
+  });
+  const r = classify(answers, foods);
+  for (const v of Object.values(r.confidences)) {
+    if (v === 0) { randomTie++; break; }
+  }
+}
+expect(`${SAMPLES} 次 N-ary 随机抽样零平局`, randomTie === 0, `ties=${randomTie}`);
 
 // ---------------------------------------------------------------------------
 // 4. 演示样本 — 全选 A(选项数组下标 0)
@@ -210,6 +232,7 @@ if (fail > 0) {
   process.exit(1);
 }
 console.log('\n✓ 16/16 MBTI types reachable');
-console.log('✓ 0 ties across 65536 answer permutations');
+console.log('✓ 0 ties across 65536 binary-projection combinations');
+console.log('✓ 0 ties across 50000 N-ary random samples');
 console.log('✓ foods.json covers all 16 MBTI cells exactly once');
-console.log('✓ questions.json schema valid');
+console.log('✓ questions.json schema valid (3+ options per question)');

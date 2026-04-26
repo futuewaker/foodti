@@ -6,10 +6,11 @@
     "trump": true,
     "scene": "🍲",
     "bubble": "饭局召唤令",
-    "text": "群里突然冒出一句『现在去吃火锅,谁来』,你的第一反应?",
+    "text": "群里突然冒出一句『现在去吃火锅,谁来』,你?",
     "options": [
-      { "label": "立刻 +1,鸳鸯锅锁了", "letter": "E" },
-      { "label": "潜水 5 分钟,看谁去再说", "letter": "I" }
+      { "label": "立刻 +1,鸳鸯锅锁了",         "letter": "E" },
+      { "label": "等几个人 +1 了我才跟",       "letter": "I" },
+      { "label": "这个时间点出门?算了",       "letter": "I" }
     ]
   },
   {
@@ -17,12 +18,13 @@
     "dim": "EI",
     "weight": 1,
     "trump": false,
-    "scene": "🍜",
-    "bubble": "想找人陪吃饭",
-    "text": "想找人陪你吃饭,你倾向?",
+    "scene": "📅",
+    "bubble": "周末默认状态",
+    "text": "完全空闲的一个周末,你的默认状态?",
     "options": [
-      { "label": "群里发『谁有空』,广撒网", "letter": "E" },
-      { "label": "私戳那个最熟的,定向出击", "letter": "I" }
+      { "label": "找朋友约局,不能在家闲着",   "letter": "E" },
+      { "label": "看心情,有局就去没局也不强求", "letter": "E" },
+      { "label": "关上门,享受独处充电",       "letter": "I" }
     ]
   },
   {
@@ -30,12 +32,13 @@
     "dim": "EI",
     "weight": 1,
     "trump": false,
-    "scene": "🍱",
-    "bubble": "别人的饭局",
-    "text": "朋友把你拉去她的局,陌生人多,两小时后你?",
+    "scene": "👥",
+    "bubble": "陌生人组",
+    "text": "公司年会随机分组,你被分到一组没见过的人,前 5 分钟你?",
     "options": [
-      { "label": "见面熟,微信都加了 5 个", "letter": "E" },
-      { "label": "和朋友坐着,几乎没挪屁股", "letter": "I" }
+      { "label": "主动开场,问一圈名字 + 部门", "letter": "E" },
+      { "label": "从手边那个人开始小声打招呼", "letter": "I" },
+      { "label": "等别人先开口,自己附和就行", "letter": "I" }
     ]
   },
   {
@@ -47,8 +50,9 @@
     "bubble": "一个人 emo 的胃",
     "text": "心情低气压又饿了,你?",
     "options": [
-      { "label": "喊人撸串,边吃边吐槽", "letter": "E" },
-      { "label": "关灯一人外卖,自我治愈", "letter": "I" }
+      { "label": "喊朋友撸串,边吃边吐槽",     "letter": "E" },
+      { "label": "点份外卖,顺手发个朋友圈",   "letter": "E" },
+      { "label": "关灯一人外卖,自我治愈",     "letter": "I" }
     ]
   },
 
@@ -61,8 +65,9 @@
     "bubble": "没见过的菜",
     "text": "服务员端来一道你完全没见过的菜,你的第一动作?",
     "options": [
-      { "label": "凑近闻闻,夹一口先尝", "letter": "S" },
-      { "label": "这是哪国的、谁发明的?", "letter": "N" }
+      { "label": "凑近闻闻,夹一口先尝",       "letter": "S" },
+      { "label": "拍照查一下,这是什么",       "letter": "S" },
+      { "label": "这是哪国的、谁发明的、像啥", "letter": "N" }
     ]
   },
   {
@@ -70,12 +75,13 @@
     "dim": "SN",
     "weight": 1,
     "trump": false,
-    "scene": "📱",
-    "bubble": "你怎么挑店",
-    "text": "选餐厅时,你点开页面会更先看?",
+    "scene": "👗",
+    "bubble": "刷到一张 outfit",
+    "text": "刷到一张你喜欢的穿搭照,你最先注意?",
     "options": [
-      { "label": "评分 + 人均 + 实拍图", "letter": "S" },
-      { "label": "装修 + 概念 + 店主故事", "letter": "N" }
+      { "label": "衣服材质、版型、上身效果",   "letter": "S" },
+      { "label": "拍照地点 / 模特表情",       "letter": "S" },
+      { "label": "整张图想表达的风格 / 灵感", "letter": "N" }
     ]
   },
   {
@@ -83,12 +89,13 @@
     "dim": "SN",
     "weight": 1,
     "trump": false,
-    "scene": "💬",
-    "bubble": "听到『有意思』",
-    "text": "朋友说『这家店挺有意思』,你想立刻问的是?",
+    "scene": "🎬",
+    "bubble": "看完电影",
+    "text": "看完一部电影,你和朋友讨论的会是?",
     "options": [
-      { "label": "哪个菜好吃?要排队吗?", "letter": "S" },
-      { "label": "怎么个有意思?谁开的?", "letter": "N" }
+      { "label": "哪段拍得帅、特效、演技",     "letter": "S" },
+      { "label": "主角下一步、剧情逻辑",       "letter": "N" },
+      { "label": "导演想表达什么、隐喻是啥",   "letter": "N" }
     ]
   },
   {
@@ -96,12 +103,13 @@
     "dim": "SN",
     "weight": 1,
     "trump": false,
-    "scene": "👩‍🍳",
-    "bubble": "你做菜的方式",
-    "text": "在家做菜,你更享受哪一种?",
+    "scene": "🛍️",
+    "bubble": "买一件 100 块的东西",
+    "text": "买一件 100 块的东西,你更看重?",
     "options": [
-      { "label": "跟食谱精确克数,严丝合缝", "letter": "S" },
-      { "label": "凭感觉乱来,反而做出新菜", "letter": "N" }
+      { "label": "实用性,用得上、不浪费",     "letter": "S" },
+      { "label": "颜值,第一眼有没有打中你",   "letter": "S" },
+      { "label": "故事 / 设计师 / 品牌理念",   "letter": "N" }
     ]
   },
 
@@ -110,12 +118,13 @@
     "dim": "TF",
     "weight": 2,
     "trump": true,
-    "scene": "😖",
-    "bubble": "ta 吃到雷",
-    "text": "朋友吃到雷,皱着脸跟你抱怨,你大概率会先?",
+    "scene": "😢",
+    "bubble": "ta 来跟你哭诉",
+    "text": "朋友来跟你哭诉一段难处理的感情,你最先?",
     "options": [
-      { "label": "这家不行,直接帮 ta 拉黑", "letter": "T" },
-      { "label": "辛苦了,下次我带你去好的", "letter": "F" }
+      { "label": "帮 ta 分析,这个人值不值得", "letter": "T" },
+      { "label": "给一个具体可执行的下一步",   "letter": "T" },
+      { "label": "先抱抱 ta,『难过就先难过一会儿』", "letter": "F" }
     ]
   },
   {
@@ -124,11 +133,12 @@
     "weight": 1,
     "trump": false,
     "scene": "🧾",
-    "bubble": "算账小尴尬",
+    "bubble": "AA 算账",
     "text": "AA 算账有人少付了二十块,你?",
     "options": [
-      { "label": "当面指出,『xx 补一下哈』", "letter": "T" },
-      { "label": "算了,自己默默贴上", "letter": "F" }
+      { "label": "当面指出,『xx 你少转了哈』",   "letter": "T" },
+      { "label": "私聊截图给 ta,『方便补一下』", "letter": "F" },
+      { "label": "算了,自己默默贴上",         "letter": "F" }
     ]
   },
   {
@@ -136,12 +146,13 @@
     "dim": "TF",
     "weight": 1,
     "trump": false,
-    "scene": "🗺️",
-    "bubble": "选店谁先发声",
-    "text": "几个人选餐厅,你最先脱口而出的会是?",
+    "scene": "📊",
+    "bubble": "同事方案有 bug",
+    "text": "同事的方案明显有 bug,会让用户体验不好,你?",
     "options": [
-      { "label": "性价比 + 评分,直接走", "letter": "T" },
-      { "label": "那家氛围好,适合一起拍照", "letter": "F" }
+      { "label": "直接在会上指出,有理有据",   "letter": "T" },
+      { "label": "会后私下提醒,给 ta 留面子", "letter": "F" },
+      { "label": "帮 ta 想怎么改 + 怎么收尾",   "letter": "F" }
     ]
   },
   {
@@ -149,12 +160,13 @@
     "dim": "TF",
     "weight": 1,
     "trump": false,
-    "scene": "🍳",
-    "bubble": "你的菜被挑剔",
-    "text": "你做了顿饭,有人挑剔说『这个咸了』,你?",
+    "scene": "💭",
+    "bubble": "察觉亲人失望",
+    "text": "你做了一个决定,亲人没说什么但你察觉到 ta 失望,你?",
     "options": [
-      { "label": "听完理由,合理就改", "letter": "T" },
-      { "label": "心里 emo,想让 ta 满意", "letter": "F" }
+      { "label": "把决策的理性原因摆给 ta 听", "letter": "T" },
+      { "label": "先承认 ta 的感受,再聊原因", "letter": "F" },
+      { "label": "自责一下,想着怎么补偿 ta",   "letter": "F" }
     ]
   },
 
@@ -163,12 +175,13 @@
     "dim": "JP",
     "weight": 2,
     "trump": true,
-    "scene": "📅",
-    "bubble": "周末晚饭谋略",
-    "text": "周末晚饭吃什么,你?",
+    "scene": "🗓️",
+    "bubble": "完全空闲的两天",
+    "text": "周末完全空闲的两天,你?",
     "options": [
-      { "label": "周三就在群里定好,不许变", "letter": "J" },
-      { "label": "出门那一刻再说,看心情", "letter": "P" }
+      { "label": "周三开始排,几点干嘛都列好", "letter": "J" },
+      { "label": "定一两个 anchor,中间留空",   "letter": "J" },
+      { "label": "起床那一刻再决定,看心情",   "letter": "P" }
     ]
   },
   {
@@ -177,11 +190,12 @@
     "weight": 1,
     "trump": false,
     "scene": "🧳",
-    "bubble": "旅行吃饭计划",
-    "text": "出去玩,关于吃饭,你?",
+    "bubble": "和朋友出去玩",
+    "text": "和朋友出去玩,你?",
     "options": [
-      { "label": "攻略列好,几点吃哪家", "letter": "J" },
-      { "label": "哪饿哪吃,街边也是缘", "letter": "P" }
+      { "label": "查好攻略、餐厅顺序排好",     "letter": "J" },
+      { "label": "列两三个想去的,顺序到了再定", "letter": "J" },
+      { "label": "走到哪算哪,街边小摊也是缘", "letter": "P" }
     ]
   },
   {
@@ -190,11 +204,12 @@
     "weight": 1,
     "trump": false,
     "scene": "🧊",
-    "bubble": "你的冰箱",
-    "text": "你冰箱里的食材通常是?",
+    "bubble": "你的冰箱 / 桌面",
+    "text": "你的冰箱(或电脑桌面)通常?",
     "options": [
-      { "label": "分类摆放,过期前一定吃完", "letter": "J" },
-      { "label": "想到再吃,过期就扔", "letter": "P" }
+      { "label": "分类整齐,过期 / 重复定期清", "letter": "J" },
+      { "label": "看着还行,但只有自己知道在哪", "letter": "J" },
+      { "label": "想到再整理,过期就扔,文件靠搜", "letter": "P" }
     ]
   },
   {
@@ -204,10 +219,11 @@
     "trump": false,
     "scene": "📞",
     "bubble": "临时召唤",
-    "text": "朋友半小时后突然约你吃饭,你?",
+    "text": "朋友半小时后突然约你出门,你?",
     "options": [
-      { "label": "先看一下今天安排再答复", "letter": "J" },
-      { "label": "走啊,在家也是发呆,直接出门", "letter": "P" }
+      { "label": "看一下今天安排再答复",       "letter": "J" },
+      { "label": "先答应,后面有事再调整",     "letter": "P" },
+      { "label": "走啊,在家也是发呆",         "letter": "P" }
     ]
   }
 ]
